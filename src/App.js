@@ -57,7 +57,7 @@ function App() {
       <Routes>
      
           {/* public routes */}
-          <Route path="/" element={<Login />} />
+          <Route path="/offsys" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/unauthorized" element={<Unauthorized />} />
 

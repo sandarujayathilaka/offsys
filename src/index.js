@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter basename="/offsys">
+    <BrowserRouter basename="/">
       <AuthProvider>
         <App />
       </AuthProvider>
