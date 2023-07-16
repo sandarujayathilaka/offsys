@@ -108,7 +108,7 @@ export default function AgPortal() {
 
           <div className="my-6 ">
             <Link
-              to="/ag/dashboard"
+              to="/offsys/ag/dashboard"
               className=" bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -116,7 +116,7 @@ export default function AgPortal() {
             </Link>
 
             <Link
-              to="/ag/departments"
+              to="/offsys/ag/departments"
               className=" bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -124,7 +124,7 @@ export default function AgPortal() {
             </Link>
 
             <Link
-              to={`/ag/updatepass/${user}`}
+              to={`/offsys/ag/updatepass/${user}`}
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
             >
               UPDATE PASSWORD

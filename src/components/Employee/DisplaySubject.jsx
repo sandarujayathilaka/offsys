@@ -137,7 +137,7 @@ const onDeleteEmployee = async (id) => {
                 }
 
                 setTimeout(() => {
-                  navigate('/admin/getEmp');
+                  navigate("/offsys/admin/getEmp");
                 }, 3000);
               } else {
                 toast.error('Failed to delete employee.');

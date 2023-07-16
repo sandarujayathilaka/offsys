@@ -129,7 +129,7 @@ export default function CommonPortal() {
 
           <div className="my-6">
             <Link
-              to="/common/role"
+              to="/offsys/common/role"
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -137,7 +137,7 @@ export default function CommonPortal() {
             </Link>
 
             <Link
-              to={`/common/allemployee/${depart}`}
+              to={`/offsys/common/allemployee/${depart}`}
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -145,7 +145,7 @@ export default function CommonPortal() {
             </Link>
 
             <Link
-              to={`/common/updatepass/${user}`}
+              to={`/offsys/common/updatepass/${user}`}
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
             >
               UPDATE PASSWORD

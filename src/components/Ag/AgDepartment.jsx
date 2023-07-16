@@ -45,7 +45,7 @@ function AgDepartment() {
       <div className="grid grid-cols-3 gap-4">
         {department &&
           department.map((dep, index) => (
-            <Link to={`/ag/allemployee/${dep.name}`} key={index}>
+            <Link to={`/offsys/ag/allemployee/${dep.name}`} key={index}>
               <div className="px-6 py-4 text-center bg-red-900 text-white transition-all duration-300 h-100 rounded-lg shadow-lg border-2 border-gray-300 hover:translate-y-[-5px] hover:bg-[#0A4754] hover:text-white">
                 {dep.name}
               </div>

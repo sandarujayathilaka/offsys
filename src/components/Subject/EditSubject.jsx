@@ -136,7 +136,7 @@ function EditSubject() {
         autoClose: 1000,
       });
       setTimeout(() => {
-        navigate(`/admin/showSub/${id}`);
+        navigate(`/offsys/admin/showSub/${id}`);
       }, 1500);
     } catch (error) {
       

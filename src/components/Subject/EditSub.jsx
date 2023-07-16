@@ -100,7 +100,7 @@ const { accessToken } = auth;
        
 
         setTimeout(() => {
-          navigate(`/admin/showSub/${id}`);
+          navigate(`/offsys/admin/showSub/${id}`);
         }, 3000);
     } catch (err) {
       if (!err?.response) {

@@ -69,7 +69,7 @@ if (isDuplicateID) {
 
     
         setTimeout(() => {
-          navigate("/admin/getSubject");
+          navigate("/offsys/admin/getSubject");
         }, 3000);
     } catch (err) {
       if (!err?.response) {

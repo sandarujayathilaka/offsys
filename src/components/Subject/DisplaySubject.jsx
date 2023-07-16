@@ -122,7 +122,7 @@ const onDeleteSubject = async (id) => {
                  toast.success('Requested Task Deleted!!');
 
                 setTimeout(() => {
-                  navigate('/admin/getSubject');
+                  navigate("/offsys/admin/getSubject");
                 }, 3000);
               } else {
                 toast.error('Failed to delete task.');
@@ -148,14 +148,13 @@ const onDeleteSubject = async (id) => {
     <>
       <div class="bg-slate-400 ml-96 mt-36 mb-20 mr-36 w-auto rounded-2xl">
         <div class="pt-10">
-      
           <h1 class="text-2xl font-bold text-[#131342] text-center">
             Subject Detail
           </h1>
         </div>
         <div class="ml-[600px] -mt-7">
           <Link
-            to={`/admin/updateSubject/${subjects._id}`}
+            to={`/offsys/admin/updateSubject/${subjects._id}`}
             className=" bg-[#2E4960] hover:bg-[#084469] px-[15px] py-[8px] rounded-[120px] font-bold text-white text-[14px] block w-[150px] text-center mb-7 mx-auto"
           >
             {" "}
@@ -169,12 +168,8 @@ const onDeleteSubject = async (id) => {
 
         <div class="flex gap-4 ml-20 mt-2">
           <h1 class="text-lg font-bold">Department : </h1>
-          <h1 class="text-lg">
-            {subjects.department}
-          </h1>
+          <h1 class="text-lg">{subjects.department}</h1>
         </div>
-
-        
 
         {loading ? (
           <button
@@ -213,7 +208,7 @@ const onDeleteSubject = async (id) => {
                     >
                       Task Name
                     </th>
-                    
+
                     <th
                       scope="col"
                       class="px-6 py-3 text-center text-xs font-medium text-black uppercase"
@@ -223,70 +218,69 @@ const onDeleteSubject = async (id) => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                {subjects.task && subjects.task.map((task, index) => (
+                  {subjects.task &&
+                    subjects.task.map((task, index) => (
+                      <tr
+                        key={index}
+                        class={`${
+                          index % 2 === 0
+                            ? "bg-white"
+                            : "bg-blue-100 dark:bg-blue-100"
+                        }`}
+                      >
+                        <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
+                          {task.name}
+                        </td>
+                        <td class="py-3 px-6  text-center">
+                          <div class="flex item-center justify-center">
+                            <Link
+                              to={`/offsys/admin/updateTask/${index}/${id}/task`}
+                            >
+                              <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
 
-                    <tr
-                      key={index}
-                      class={`${
-                        index % 2 === 0
-                          ? "bg-white"
-                          : "bg-blue-100 dark:bg-blue-100"
-                      }`}
-                    >
-                      <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
-                        {task.name}
-                      </td>
-                      <td class="py-3 px-6  text-center">
-                        <div class="flex item-center justify-center">
-                          <Link
-                            to={`/admin/updateTask/${index}/${id}/task`}
-                          >
-                            <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                />
-                              </svg>
-                            </div>
-                          </Link>
-
-                          <button onClick={() => onDelete(index,"task")}>
-                            <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                />
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            <button onClick={() => onDelete(index, "task")}>
+                              <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
           </div>
         )}
 
-
-{loading ? (
+        {loading ? (
           <button
             disabled
             type="button"
@@ -323,7 +317,7 @@ const onDeleteSubject = async (id) => {
                     >
                       Pending Reason
                     </th>
-                    
+
                     <th
                       scope="col"
                       class="px-6 py-3 text-center text-xs font-medium text-black uppercase"
@@ -333,70 +327,69 @@ const onDeleteSubject = async (id) => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                {subjects.pending && subjects.pending.map((pending, index) => (
+                  {subjects.pending &&
+                    subjects.pending.map((pending, index) => (
+                      <tr
+                        key={index}
+                        class={`${
+                          index % 2 === 0
+                            ? "bg-white"
+                            : "bg-blue-100 dark:bg-blue-100"
+                        }`}
+                      >
+                        <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
+                          {pending.name}
+                        </td>
+                        <td class="py-3 px-6  text-center">
+                          <div class="flex item-center justify-center">
+                            <Link
+                              to={`/offsys/admin/updateTask/${index}/${id}/pending`}
+                            >
+                              <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
 
-                    <tr
-                      key={index}
-                      class={`${
-                        index % 2 === 0
-                          ? "bg-white"
-                          : "bg-blue-100 dark:bg-blue-100"
-                      }`}
-                    >
-                      <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
-                        {pending.name}
-                      </td>
-                      <td class="py-3 px-6  text-center">
-                        <div class="flex item-center justify-center">
-                          <Link
-                            to={`/admin/updateTask/${index}/${id}/pending`}
-                          >
-                            <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                />
-                              </svg>
-                            </div>
-                          </Link>
-
-                          <button onClick={() => onDelete(index,"pending")}>
-                            <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                />
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            <button onClick={() => onDelete(index, "pending")}>
+                              <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
           </div>
         )}
 
-
-{loading ? (
+        {loading ? (
           <button
             disabled
             type="button"
@@ -433,7 +426,7 @@ const onDeleteSubject = async (id) => {
                     >
                       Reject Reason
                     </th>
-                    
+
                     <th
                       scope="col"
                       class="px-6 py-3 text-center text-xs font-medium text-black uppercase"
@@ -443,70 +436,67 @@ const onDeleteSubject = async (id) => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                {subjects.reject && subjects.reject.map((reject, index) => (
+                  {subjects.reject &&
+                    subjects.reject.map((reject, index) => (
+                      <tr
+                        key={index}
+                        class={`${
+                          index % 2 === 0
+                            ? "bg-white"
+                            : "bg-blue-100 dark:bg-blue-100"
+                        }`}
+                      >
+                        <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
+                          {reject.name}
+                        </td>
+                        <td class="py-3 px-6  text-center">
+                          <div class="flex item-center justify-center">
+                            <Link
+                              to={`/offsys/admin/updateTask/${index}/${id}/reject`}
+                            >
+                              <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
 
-                    <tr
-                      key={index}
-                      class={`${
-                        index % 2 === 0
-                          ? "bg-white"
-                          : "bg-blue-100 dark:bg-blue-100"
-                      }`}
-                    >
-                      <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
-                        {reject.name}
-                      </td>
-                      <td class="py-3 px-6  text-center">
-                        <div class="flex item-center justify-center">
-                          <Link
-                            to={`/admin/updateTask/${index}/${id}/reject`}
-                          >
-                            <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                />
-                              </svg>
-                            </div>
-                          </Link>
-
-                          <button onClick={() => onDelete(index,"reject")}>
-                            <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                />
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            <button onClick={() => onDelete(index, "reject")}>
+                              <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
           </div>
         )}
-      
-
-     
 
         <button
           onClick={() => onDeleteSubject(subjects._id)}
