@@ -51,7 +51,7 @@ export default function AdminPortal() {
                     {user}
                   </Link>
                   <Link
-                    to="/login"
+                    to="/offsys"
                     className="block py-2 pl-3 pr-4  text-secondary rounded  hover:text-gray-800 md:bg-transparent md:p-0 "
                   >
                     Logout
@@ -104,7 +104,7 @@ export default function AdminPortal() {
 
           <div className="my-6">
             <Link
-              to="/admin/getDep"
+              to="offsys/admin/getDep"
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -112,7 +112,7 @@ export default function AdminPortal() {
             </Link>
 
             <Link
-              to="/admin/getEmp"
+              to="offsys/admin/getEmp"
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -120,7 +120,7 @@ export default function AdminPortal() {
             </Link>
 
             <Link
-              to="/admin/getSubject"
+              to="/offsys/admin/getSubject"
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
               onClick={handleOptionClick}
             >
@@ -128,7 +128,7 @@ export default function AdminPortal() {
             </Link>
 
             <Link
-              to={`/admin/updatepass/${user}`}
+              to={`offsys/admin/updatepass/${user}`}
               className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
             >
               UPDATE PASSWORD

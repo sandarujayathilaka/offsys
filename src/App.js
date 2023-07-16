@@ -57,8 +57,8 @@ function App() {
       <Routes>
         {/* public routes */}
         <Route path="/offsys" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/unauthorized" element={<Unauthorized />} />
+        <Route path="/offsys/register" element={<Register />} />
+        <Route path="/offsys/unauthorized" element={<Unauthorized />} />
 
         {/* we want to protect these routes */}
         <Route element={<PersistLogin />}>
