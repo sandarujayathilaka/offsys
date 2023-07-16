@@ -55,90 +55,88 @@ function App() {
   return (
     <>
       <Routes>
-     
-          {/* public routes */}
-          <Route path="/offsys" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/unauthorized" element={<Unauthorized />} />
+        {/* public routes */}
+        <Route path="/offsys" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/unauthorized" element={<Unauthorized />} />
 
-          {/* we want to protect these routes */}
-          <Route element={<PersistLogin />}>
-            <Route
-              element={
-                <RequireAuth allowedRoles={[ROLES.Divisional_Secretariat]} />
-              }
-            >
-              <Route path="offsys/ag" element={<AgPortal />}>
-                <Route path="dashboard" element={<AgDashboard />} />
-                <Route path="departments" element={<AgDepartment />} />
-                <Route path="allemployee/:id" element={<AllEmployee />} />
-                <Route path="employeetask/:id" element={<EmployeeTask />} />
-                <Route path="updatepass/:eid" element={<UpdatePassword />} />
-              </Route>
-            </Route>
-
-            <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-              <Route path="offsys/admin" element={<AdminPortal />}>
-                <Route path="addEmp" element={<AdminEmployee />} />
-                <Route path="addDep" element={<AdminDepartment />} />
-                <Route path="getEmp" element={<AllEmployees />} />
-                <Route path="getDep" element={<AllDepartment />} />
-                <Route path="updateDep/:id" element={<EditDepartment />} />
-                <Route path="addSub/:id" element={<AddSubject />} />
-                <Route path="show/:id" element={<DisplaySubject />} />
-                <Route
-                  path="updateSub/:index/:id/:status"
-                  element={<UpdateSubject />}
-                />
-                <Route path="addSubject" element={<AddSubjectTask />} />
-                <Route path="getSubject" element={<AllSubject />} />
-                <Route path="showSub/:id" element={<DisplaySubjectTask />} />
-                <Route path="updateSubject/:id" element={<EditSubject />} />
-                <Route
-                  path="updateTask/:index/:id/:status"
-                  element={<EditSub />}
-                />
-                <Route path="updatepass/:eid" element={<UpdatePassword />} />
-              </Route>
-            </Route>
-
-            <Route element={<RequireAuth allowedRoles={[ROLES.Employee]} />}>
-              <Route path="/employee" element={<EmployeePortal />}>
-                <Route path="employeeform" element={<Employee />} />
-                <Route path="employeetasks" element={<EmployeeTasks />} />
-                <Route path="pendingtasks" element={<PendingTasks />} />
-                <Route path="diaplaypending/:id" element={<DisplayPending />} />
-                <Route path="updatepen/:id" element={<UpdatePending />} />
-                <Route path="submitreport" element={<ReportSubmit />} />
-                <Route path="updatepass/:eid" element={<UpdatePassword />} />
-              </Route>
-            </Route>
-
-            <Route
-              element={
-                <RequireAuth
-                  allowedRoles={[
-                    ROLES.Assistant_Director,
-                    ROLES.Assistant_District_Registar,
-                    ROLES.Cheif_Clerk,
-                    ROLES.Accountant,
-                    ROLES.Administrative_Officer,
-                  ]}
-                />
-              }
-            >
-              <Route path="offsys/common" element={<CommonPortal />}>
-                <Route path="role" element={<CommonDashboard />} />
-                <Route path="allemployee/:id" element={<HeadEmployee />} />
-                <Route path="employeetask/:id" element={<HeadEmpTask />} />
-                <Route path="updatepass/:eid" element={<UpdatePassword />} />
-              </Route>
+        {/* we want to protect these routes */}
+        <Route element={<PersistLogin />}>
+          <Route
+            element={
+              <RequireAuth allowedRoles={[ROLES.Divisional_Secretariat]} />
+            }
+          >
+            <Route path="offsys/ag" element={<AgPortal />}>
+              <Route path="dashboard" element={<AgDashboard />} />
+              <Route path="departments" element={<AgDepartment />} />
+              <Route path="allemployee/:id" element={<AllEmployee />} />
+              <Route path="employeetask/:id" element={<EmployeeTask />} />
+              <Route path="updatepass/:eid" element={<UpdatePassword />} />
             </Route>
           </Route>
 
-          {/* catch all */}
-          <Route path="*" element={<Missing />} />
-   
+          <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
+            <Route path="offsys/admin" element={<AdminPortal />}>
+              <Route path="addEmp" element={<AdminEmployee />} />
+              <Route path="addDep" element={<AdminDepartment />} />
+              <Route path="getEmp" element={<AllEmployees />} />
+              <Route path="getDep" element={<AllDepartment />} />
+              <Route path="updateDep/:id" element={<EditDepartment />} />
+              <Route path="addSub/:id" element={<AddSubject />} />
+              <Route path="show/:id" element={<DisplaySubject />} />
+              <Route
+                path="updateSub/:index/:id/:status"
+                element={<UpdateSubject />}
+              />
+              <Route path="addSubject" element={<AddSubjectTask />} />
+              <Route path="getSubject" element={<AllSubject />} />
+              <Route path="showSub/:id" element={<DisplaySubjectTask />} />
+              <Route path="updateSubject/:id" element={<EditSubject />} />
+              <Route
+                path="updateTask/:index/:id/:status"
+                element={<EditSub />}
+              />
+              <Route path="updatepass/:eid" element={<UpdatePassword />} />
+            </Route>
+          </Route>
+
+          <Route element={<RequireAuth allowedRoles={[ROLES.Employee]} />}>
+            <Route path="offsys/employee" element={<EmployeePortal />}>
+              <Route path="employeeform" element={<Employee />} />
+              <Route path="employeetasks" element={<EmployeeTasks />} />
+              <Route path="pendingtasks" element={<PendingTasks />} />
+              <Route path="diaplaypending/:id" element={<DisplayPending />} />
+              <Route path="updatepen/:id" element={<UpdatePending />} />
+              <Route path="submitreport" element={<ReportSubmit />} />
+              <Route path="updatepass/:eid" element={<UpdatePassword />} />
+            </Route>
+          </Route>
+
+          <Route
+            element={
+              <RequireAuth
+                allowedRoles={[
+                  ROLES.Assistant_Director,
+                  ROLES.Assistant_District_Registar,
+                  ROLES.Cheif_Clerk,
+                  ROLES.Accountant,
+                  ROLES.Administrative_Officer,
+                ]}
+              />
+            }
+          >
+            <Route path="offsys/common" element={<CommonPortal />}>
+              <Route path="role" element={<CommonDashboard />} />
+              <Route path="allemployee/:id" element={<HeadEmployee />} />
+              <Route path="employeetask/:id" element={<HeadEmpTask />} />
+              <Route path="updatepass/:eid" element={<UpdatePassword />} />
+            </Route>
+          </Route>
+        </Route>
+
+        {/* catch all */}
+        <Route path="*" element={<Missing />} />
       </Routes>
 
       <ToastContainer />
