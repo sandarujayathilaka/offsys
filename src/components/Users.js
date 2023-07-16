@@ -21,7 +21,10 @@ const Users = () => {
                 isMounted && setUsers(response.data);
             } catch (err) {
                 
-                navigate('/login', { state: { from: location }, replace: true });
+                navigate("/offsys", {
+                  state: { from: location },
+                  replace: true,
+                });
             }
         }
 

@@ -72,7 +72,7 @@ const {  accessToken } = auth;
       setID("");
       setName("");
       setTimeout(() => {
-        navigate("/admin/getDep");
+        navigate("/offsys/admin/getDep");
       }, 3000);
     } catch (err) {
       if (!err?.response) {

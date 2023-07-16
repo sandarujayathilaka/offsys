@@ -138,7 +138,7 @@ if (isDuplicateID) {
         setReport([]);
 
         setTimeout(() => {
-          navigate("/admin/getEmp");
+          navigate("/offsys/admin/getEmp");
         }, 3000);
 
     } catch (err) {

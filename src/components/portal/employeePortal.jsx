@@ -55,7 +55,7 @@ export default function EmployeePortal() {
                     {user}
                   </Link>
                   <Link
-                    to="/login"
+                    to="/offsys"
                     className="block py-2 pl-3 pr-4  text-secondary rounded  hover:text-gray-800 md:bg-transparent md:p-0 "
                   >
                     Logout
@@ -87,7 +87,7 @@ export default function EmployeePortal() {
 
             <div className="my-6 ">
               <NavLink
-                to="offsys/employee/employeeform"
+                to="/offsys/employee/employeeform"
                 className="bg-[#ffffff] px-[15px] hover:bg-[#797979] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
                 onClick={handleNavLinkClick}
               >
@@ -103,7 +103,7 @@ export default function EmployeePortal() {
               </NavLink>
 
               <NavLink
-                to="/employee/pendingtasks"
+                to="/offsys/employee/pendingtasks"
                 className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
                 onClick={handleNavLinkClick}
               >
@@ -111,7 +111,7 @@ export default function EmployeePortal() {
               </NavLink>
 
               <NavLink
-                to="/employee/submitreport"
+                to="/offsys/employee/submitreport"
                 className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
                 onClick={handleNavLinkClick}
               >
@@ -119,7 +119,7 @@ export default function EmployeePortal() {
               </NavLink>
 
               <NavLink
-                to={`/employee/updatepass/${user}`}
+                to={`/offsys/employee/updatepass/${user}`}
                 className="bg-[#ffffff] hover:bg-[#797979] px-[15px] py-[8px] rounded-[120px] font-bold text-black text-[10px] block w-[150px] text-center mb-7 mx-auto"
                 onClick={handleNavLinkClick}
               >

@@ -76,7 +76,7 @@ export default function CommonPortal() {
                     {user}
                   </Link>
                   <Link
-                    to="/login"
+                    to="/offsys"
                     className="block py-2 pl-3 pr-4  text-secondary rounded  hover:text-gray-800 md:bg-transparent md:p-0 "
                   >
                     Logout

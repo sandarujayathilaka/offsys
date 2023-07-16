@@ -89,7 +89,7 @@ function UpdatePending() {
         autoClose: 1000,
       });
       setTimeout(
-        () => (window.location.href = `/employee/diaplaypending/${id}`),
+        () => (window.location.href = `/offsys/employee/diaplaypending/${id}`),
         1000
       );
     } catch (err) {

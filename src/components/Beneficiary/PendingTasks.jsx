@@ -90,7 +90,7 @@ function PendingTasks() {
                 autoClose: 1000,
               });
               setTimeout(() => {
-                window.location.href = `/employee/pendingtasks`;
+                window.location.href = `/offsys/employee/pendingtasks`;
               }, 1500);
             }}
           >
@@ -196,7 +196,7 @@ function PendingTasks() {
 
                   <td class="py-3 px-6 text-center">
                     <div class="flex item-center justify-center">
-                      <Link to={`/employee/diaplaypending/${Task._id}`}>
+                      <Link to={`/offsys/employee/diaplaypending/${Task._id}`}>
                         <div class="w-4 mr-2 transform hover:text-green-600 hover:scale-110">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

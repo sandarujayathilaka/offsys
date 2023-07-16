@@ -98,7 +98,7 @@ function EmployeeTasks() {
                 autoClose: 1000,
               });
               setTimeout(() => {
-                window.location.href = `/employee/employeetasks`;
+                window.location.href = `/offsys/employee/employeetasks`;
               }, 1500);
             }}
           >

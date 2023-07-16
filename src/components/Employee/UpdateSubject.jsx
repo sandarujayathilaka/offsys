@@ -95,7 +95,7 @@ const { accessToken } = auth;
       setReport("");
         setSubject([]);
         setTimeout(() => {
-          navigate(`/admin/show/${id}`);
+          navigate(`/offsys/admin/show/${id}`);
         }, 3000);
     } catch (err) {
       if (!err?.response) {

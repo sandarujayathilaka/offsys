@@ -58,7 +58,10 @@ function ReportSubmit() {
       toast.success("Date Updated Successfully", {
         autoClose: 1000,
       });
-      setTimeout(() => (window.location.href = `/employee/submitreport`), 1000);
+      setTimeout(
+        () => (window.location.href = `/offsys/employee/submitreport`),
+        1000
+      );
     } catch (err) {
       alert(err);
     }

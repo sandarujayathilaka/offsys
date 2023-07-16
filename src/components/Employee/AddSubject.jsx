@@ -170,7 +170,7 @@ function AddSubject() {
         autoClose: 1000,
       });
       setTimeout(() => {
-        navigate(`/admin/show/${id}`);
+        navigate(`/offsys/admin/show/${id}`);
       }, 1500);
     } catch (err) {
       if (!err?.response) {

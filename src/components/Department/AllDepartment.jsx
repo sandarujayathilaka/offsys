@@ -92,7 +92,7 @@ function AllDepartment() {
                   );
             
                   setTimeout(() => {
-                    navigate('/admin/getDep');
+                    navigate("/offsys/admin/getDep");
                   }, 3000);
                 } else {
                   toast.error('Failed to delete department.');
@@ -115,8 +115,7 @@ function AllDepartment() {
   
   return (
     <div>
-
-<div className="min-h-screen  py-5 ml-[17%] pt-20 ">
+      <div className="min-h-screen  py-5 ml-[17%] pt-20 ">
         <div className="fixed ">
           <form className="flex items-center mt-10">
             <label for="simple-search" className="sr-only">
@@ -149,8 +148,6 @@ function AllDepartment() {
             </div>
           </form>
 
-         
-
           <div className="-mt-[58px]">
             <button
               type="button"
@@ -158,7 +155,7 @@ function AllDepartment() {
      focus:ring-blue-300 font-medium rounded-xl text-sm px-3.5 py-2 text-center ml-[1045px] mt-5 mb-4 dark:bg-blue-600 
      dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              <Link to="/admin/addDep">Add Department</Link>
+              <Link to="/offsys/admin/addDep">Add Department</Link>
             </button>
           </div>
         </div>
@@ -169,7 +166,7 @@ function AllDepartment() {
               <tr class="text-white text-left">
                 <th class="font-semibold text-sm uppercase text-center px-6 py-4">
                   {" "}
-                 Department ID{" "}
+                  Department ID{" "}
                 </th>
                 <th class="font-semibold text-sm uppercase text-center px-6 py-4">
                   {" "}
@@ -185,11 +182,10 @@ function AllDepartment() {
                 <tr key={index} class="bg-gray-200 hover:bg-slate-100">
                   <td class="px-6 py-4 text-center"> {department.did}</td>
                   <td class="px-6 py-4 text-center"> {department.name} </td>
-                  
+
                   <td class="py-3 px-6 text-center">
                     <div className="flex item-center justify-center">
-                      
-                      <Link to={`/admin/updateDep/${department._id}`}>
+                      <Link to={`/offsys/admin/updateDep/${department._id}`}>
                         <div className="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -208,23 +204,22 @@ function AllDepartment() {
                       </Link>
 
                       <button onClick={() => onDelete(department._id)}>
-  <div className="w-4 mr-2 transform hover:text-red-600 hover:scale-110 z-0">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="2"
-        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-      />
-    </svg>
-  </div>
-</button>
-
+                        <div className="w-4 mr-2 transform hover:text-red-600 hover:scale-110 z-0">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                            />
+                          </svg>
+                        </div>
+                      </button>
                     </div>
                   </td>
                 </tr>
@@ -235,10 +230,8 @@ function AllDepartment() {
       </div>
 
       <Outlet />
-
-
     </div>
-  )
+  );
 }
 
 export default AllDepartment

@@ -161,14 +161,13 @@ const onDeleteEmployee = async (id) => {
     <>
       <div class="bg-slate-400 ml-96 mt-36 mb-20 mr-36 w-auto rounded-2xl">
         <div class="pt-10">
-        
           <h1 class="text-2xl font-bold text-[#131342] text-center">
             Employee Detail
           </h1>
         </div>
         <div class="ml-[600px] -mt-7">
           <Link
-            to={`/admin/addSub/${id}`}
+            to={`/offsys/admin/addSub/${id}`}
             className=" bg-[#2E4960] hover:bg-[#084469] px-[15px] py-[8px] rounded-[120px] font-bold text-white text-[14px] block w-[150px] text-center mb-7 mx-auto"
           >
             {" "}
@@ -182,9 +181,7 @@ const onDeleteEmployee = async (id) => {
 
         <div class="flex gap-4 ml-20 mt-2">
           <h1 class="text-lg font-bold">Employee Name : </h1>
-          <h1 class="text-lg">
-            {employee.name}
-          </h1>
+          <h1 class="text-lg">{employee.name}</h1>
         </div>
 
         <div class="flex gap-4 ml-20 mt-2">
@@ -202,16 +199,16 @@ const onDeleteEmployee = async (id) => {
           <h1 class="text-lg">{employee.email}</h1>
         </div>
 
-
         <div className="flex gap-4 ml-20 mt-2">
-  <h1 className="text-lg font-bold">Role : </h1>
-  {employee.roles ? (
-    <h1 className="text-lg">{Object.keys(employee.roles).join(", ")}</h1>
-  ) : (
-    <h1 className="text-lg">No roles</h1>
-  )}
-</div>
-
+          <h1 className="text-lg font-bold">Role : </h1>
+          {employee.roles ? (
+            <h1 className="text-lg">
+              {Object.keys(employee.roles).join(", ")}
+            </h1>
+          ) : (
+            <h1 className="text-lg">No roles</h1>
+          )}
+        </div>
 
         <div class="flex gap-4 ml-20 mt-2">
           <h1 class="text-lg font-bold">Department : </h1>
@@ -255,7 +252,7 @@ const onDeleteEmployee = async (id) => {
                     >
                       Subject Name
                     </th>
-                    
+
                     <th
                       scope="col"
                       class="px-6 py-3 text-center text-xs font-medium text-black uppercase"
@@ -265,70 +262,69 @@ const onDeleteEmployee = async (id) => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                {employee.subject && employee.subject.map((subject, index) => (
+                  {employee.subject &&
+                    employee.subject.map((subject, index) => (
+                      <tr
+                        key={index}
+                        class={`${
+                          index % 2 === 0
+                            ? "bg-white"
+                            : "bg-blue-100 dark:bg-blue-100"
+                        }`}
+                      >
+                        <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
+                          {subject.name}
+                        </td>
+                        <td class="py-3 px-6  text-center">
+                          <div class="flex item-center justify-center">
+                            <Link
+                              to={`/offsys/admin/updateSub/${index}/${id}/subject`}
+                            >
+                              <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
 
-                    <tr
-                      key={index}
-                      class={`${
-                        index % 2 === 0
-                          ? "bg-white"
-                          : "bg-blue-100 dark:bg-blue-100"
-                      }`}
-                    >
-                      <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
-                        {subject.name}
-                      </td>
-                      <td class="py-3 px-6  text-center">
-                        <div class="flex item-center justify-center">
-                          <Link
-                            to={`/admin/updateSub/${index}/${id}/subject`}
-                          >
-                            <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                />
-                              </svg>
-                            </div>
-                          </Link>
-
-                          <button onClick={() => onDelete(index,"subject")}>
-                            <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                />
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            <button onClick={() => onDelete(index, "subject")}>
+                              <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>
           </div>
         )}
 
-      
-{loading ? (
+        {loading ? (
           <button
             disabled
             type="button"
@@ -365,7 +361,7 @@ const onDeleteEmployee = async (id) => {
                     >
                       Report Name
                     </th>
-                    
+
                     <th
                       scope="col"
                       class="px-6 py-3 text-center text-xs font-medium text-black uppercase"
@@ -375,62 +371,62 @@ const onDeleteEmployee = async (id) => {
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                {employee.report && employee.report.map((report, index) => (
+                  {employee.report &&
+                    employee.report.map((report, index) => (
+                      <tr
+                        key={index}
+                        class={`${
+                          index % 2 === 0
+                            ? "bg-white"
+                            : "bg-blue-100 dark:bg-blue-100"
+                        }`}
+                      >
+                        <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
+                          {report.name}
+                        </td>
+                        <td class="py-3 px-6  text-center">
+                          <div class="flex item-center justify-center">
+                            <Link
+                              to={`/offsys/admin/updateSub/${index}/${id}/report`}
+                            >
+                              <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                                  />
+                                </svg>
+                              </div>
+                            </Link>
 
-                    <tr
-                      key={index}
-                      class={`${
-                        index % 2 === 0
-                          ? "bg-white"
-                          : "bg-blue-100 dark:bg-blue-100"
-                      }`}
-                    >
-                      <td class="px-1 py-2 text-center whitespace-nowrap text-sm font-medium text-black">
-                        {report.name}
-                      </td>
-                      <td class="py-3 px-6  text-center">
-                        <div class="flex item-center justify-center">
-                          <Link
-                            to={`/admin/updateSub/${index}/${id}/report`}
-                          >
-                            <div class="w-4 mr-2 transform hover:text-yellow-500 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-                                />
-                              </svg>
-                            </div>
-                          </Link>
-
-                          <button onClick={() => onDelete(index,"report")}>
-                            <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                              >
-                                <path
-                                  stroke-linecap="round"
-                                  stroke-linejoin="round"
-                                  stroke-width="2"
-                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                                />
-                              </svg>
-                            </div>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
+                            <button onClick={() => onDelete(index, "report")}>
+                              <div class="w-4 mr-2 transform hover:text-red-600 hover:scale-110">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                                  />
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>

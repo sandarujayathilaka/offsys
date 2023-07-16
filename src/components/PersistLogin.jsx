@@ -65,7 +65,7 @@ const PersistLogin = () => {
   }
 
   if (!auth?.accessToken) {
-    navigate("/login"); // Redirect to the login page
+    navigate("/offsys"); // Redirect to the login page
     return null;
   }
 

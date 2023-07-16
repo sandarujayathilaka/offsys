@@ -44,7 +44,7 @@ function DisplayPending() {
         </div>
         <div class="ml-[600px] -mt-7">
           <Link
-            to={`/employee/updatepen/${id}`}
+            to={`/offsys/employee/updatepen/${id}`}
             className=" bg-[#2E4960] hover:bg-[#084469] px-[15px] py-[8px] rounded-[120px] font-bold text-white text-[14px] block w-[150px] text-center mb-7 mx-auto"
           >
             {" "}
