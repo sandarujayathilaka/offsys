@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/offsys/static/css/main.93f16746.css",
+    "main.js": "/offsys/static/js/main.dfb83d02.js",
+    "static/media/1.png": "/offsys/static/media/1.a56ba367d3a6ed0f3bbe.png",
+    "static/media/logo.png": "/offsys/static/media/logo.5d73bb957759b58b8b42.png",
+    "index.html": "/offsys/index.html",
+    "main.93f16746.css.map": "/offsys/static/css/main.93f16746.css.map",
+    "main.dfb83d02.js.map": "/offsys/static/js/main.dfb83d02.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.93f16746.css",
+    "static/js/main.dfb83d02.js"
+  ]
+}
