@@ -55,11 +55,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}>
+     
           {/* public routes */}
           <Route path="login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route path="unauthorized" element={<Unauthorized />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
 
           {/* we want to protect these routes */}
           <Route element={<PersistLogin />}>
@@ -68,7 +68,7 @@ function App() {
                 <RequireAuth allowedRoles={[ROLES.Divisional_Secretariat]} />
               }
             >
-              <Route path="ag" element={<AgPortal />}>
+              <Route path="offsys/ag" element={<AgPortal />}>
                 <Route path="dashboard" element={<AgDashboard />} />
                 <Route path="departments" element={<AgDepartment />} />
                 <Route path="allemployee/:id" element={<AllEmployee />} />
@@ -78,7 +78,7 @@ function App() {
             </Route>
 
             <Route element={<RequireAuth allowedRoles={[ROLES.Admin]} />}>
-              <Route path="admin" element={<AdminPortal />}>
+              <Route path="offsys/admin" element={<AdminPortal />}>
                 <Route path="addEmp" element={<AdminEmployee />} />
                 <Route path="addDep" element={<AdminDepartment />} />
                 <Route path="getEmp" element={<AllEmployees />} />
@@ -103,7 +103,7 @@ function App() {
             </Route>
 
             <Route element={<RequireAuth allowedRoles={[ROLES.Employee]} />}>
-              <Route path="employee" element={<EmployeePortal />}>
+              <Route path="offsys/employee" element={<EmployeePortal />}>
                 <Route path="employeeform" element={<Employee />} />
                 <Route path="employeetasks" element={<EmployeeTasks />} />
                 <Route path="pendingtasks" element={<PendingTasks />} />
@@ -127,7 +127,7 @@ function App() {
                 />
               }
             >
-              <Route path="common" element={<CommonPortal />}>
+              <Route path="offsys/common" element={<CommonPortal />}>
                 <Route path="role" element={<CommonDashboard />} />
                 <Route path="allemployee/:id" element={<HeadEmployee />} />
                 <Route path="employeetask/:id" element={<HeadEmpTask />} />
@@ -138,7 +138,7 @@ function App() {
 
           {/* catch all */}
           <Route path="*" element={<Missing />} />
-        </Route>
+   
       </Routes>
 
       <ToastContainer />
