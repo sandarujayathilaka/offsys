@@ -18,6 +18,7 @@ const Department_URL = "/dep/getdep";
 const GET_Employee_URL = "/employee/getemp";
 
 const AgDashboard = () => {
+
   const [ben, setBen] = useState([]);
   const { auth } = useAuth();
   const [pendingTasks, setPendingTasks] = useState(0);
@@ -25,10 +26,13 @@ const AgDashboard = () => {
   const [progress, setProgress] = useState(0);
   const [successTasks, setSuccessTasks] = useState(0);
   const [department, setDepartment] = useState([]);
+  const [total, setTotal] = useState(0);
   const [selectedDepartment, setSelectedDepartment] = useState("All");
-const [selectedEmployee, setSelectedEmployee] = useState("All");
-const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [employee,setEmployee] = useState([]);
+  const [selectedEmployee, setSelectedEmployee] = useState("All");
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0]
+  );
+  const [employee, setEmployee] = useState([]);
   
 
   useEffect(() => {
@@ -149,19 +153,23 @@ const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split(
     setPendingTasks(pendingCount);
     setSuccessTasks(successCount);
     setRejectTasks(rejectCount);
-    let progress;
-    if (successCount === 0 && pendingCount === 0 && rejectCount === 0) {
-      progress = 0;
-    } else {
-      progress =
-        ((Number(successCount) +
-          Number(rejectCount) +
-          Number(pendingCount) * 0.5) /
-          (Number(pendingCount) + Number(rejectCount) + Number(successCount))) *
-        100;
-      progress = progress.toFixed(2);
-    }
-    setProgress(progress);
+   let progress;
+   let total;
+   if (successCount === 0 && pendingCount === 0 && rejectCount === 0) {
+     progress = 0;
+     total = 0;
+   } else {
+     progress =
+       ((Number(successCount) +
+         Number(rejectCount) +
+         Number(pendingCount) * 0.5) /
+         (Number(pendingCount) + Number(rejectCount) + Number(successCount))) *
+       100;
+     progress = progress.toFixed(2);
+     total = Number(successCount) + Number(rejectCount) + Number(pendingCount);
+   }
+   setProgress(progress);
+   setTotal(total);
   }, [ben]);
 
   const eventStatus = [
@@ -247,17 +255,15 @@ const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split(
               </select>
             </div>
             <div class="ml-[110px]">
-            <input
-  type="date"
-  id="simple-search"
-  value={selectedDate}
-  onChange={(e) => setSelectedDate(e.target.value)}
-  className="bg-white border ml-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
-  placeholder="Search by ID or Name"
-  required
-/>
-
-              
+              <input
+                type="date"
+                id="simple-search"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="bg-white border ml-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Search by ID or Name"
+                required
+              />
             </div>
           </div>
           <div className="flex justify-around mt-20">
@@ -272,6 +278,10 @@ const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split(
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
               <h2 className="text-lg font-medium">Total Reject</h2>
               <p className="text-3xl font-bold">{rejectTasks}</p>
+            </div>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+              <h2 className="text-lg font-medium">Total Customers</h2>
+              <p className="text-3xl font-bold">{total}</p>
             </div>
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
               <h2 className="text-lg font-medium">Total Progress</h2>

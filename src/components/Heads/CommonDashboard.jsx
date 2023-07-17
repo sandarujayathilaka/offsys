@@ -21,6 +21,7 @@ const AgDashboard = () => {
   const { auth } = useAuth();
   const [pendingTasks, setPendingTasks] = useState(0);
   const [rejectTasks, setRejectTasks] = useState(0);
+  const [total, setTotal] = useState(0);
   const [progress, setProgress] = useState(0);
   const [successTasks, setSuccessTasks] = useState(0);
   const [department, setDepartment] = useState("");
@@ -154,19 +155,23 @@ const AgDashboard = () => {
     setPendingTasks(pendingCount);
     setSuccessTasks(successCount);
     setRejectTasks(rejectCount);
-    let progress;
-    if (successCount === 0 && pendingCount === 0 && rejectCount === 0) {
-      progress = 0;
-    } else {
-      progress =
-        ((Number(successCount) +
-          Number(rejectCount) +
-          Number(pendingCount) * 0.5) /
-          (Number(pendingCount) + Number(rejectCount) + Number(successCount))) *
-        100;
-      progress = progress.toFixed(2);
-    }
-    setProgress(progress);
+   let progress;
+   let total;
+   if (successCount === 0 && pendingCount === 0 && rejectCount === 0) {
+     progress = 0;
+     total = 0;
+   } else {
+     progress =
+       ((Number(successCount) +
+         Number(rejectCount) +
+         Number(pendingCount) * 0.5) /
+         (Number(pendingCount) + Number(rejectCount) + Number(successCount))) *
+       100;
+     progress = progress.toFixed(2);
+     total = Number(successCount) + Number(rejectCount) + Number(pendingCount);
+   }
+   setProgress(progress);
+   setTotal(total);
   }, [ben]);
 
   const eventStatus = [
@@ -236,6 +241,10 @@ const AgDashboard = () => {
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
               <h2 className="text-lg font-medium">Total Reject</h2>
               <p className="text-3xl font-bold">{rejectTasks}</p>
+            </div>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+              <h2 className="text-lg font-medium">Total Customer</h2>
+              <p className="text-3xl font-bold">{total}</p>
             </div>
             <div className="bg-gray-100 p-4 rounded-lg shadow-md">
               <h2 className="text-lg font-medium">Total Progress</h2>

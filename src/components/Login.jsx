@@ -5,6 +5,7 @@ import useInput from '../hooks/useInput';
 import useToggle from '../hooks/useToggle';
 import React from 'react';
 import logo from '../image/1.png';
+import moto from "../image/Capture.PNG";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from '../api/axios';
@@ -116,6 +117,12 @@ toast.success("Login successfully");
     return (
       <section>
         <div className="flex items-center justify-center h-screen  bg-teal-900">
+          <img
+            src={moto}
+            alt="react logo"
+            className="w-2/3 max-w-xl absolute top-0 right-0"
+          />
+
           <div
             className="absolute left-0 top-0 w-[700px] h-[700px] bg-no-repeat opacity-20 rounded-[65px]"
             style={{

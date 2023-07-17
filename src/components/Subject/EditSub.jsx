@@ -101,7 +101,7 @@ const { accessToken } = auth;
 
         setTimeout(() => {
           navigate(`/offsys/admin/showSub/${id}`);
-        }, 3000);
+        }, 1000);
     } catch (err) {
       if (!err?.response) {
         toast.error('No Server Response');

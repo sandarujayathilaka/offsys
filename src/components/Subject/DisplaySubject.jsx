@@ -123,7 +123,7 @@ const onDeleteSubject = async (id) => {
 
                 setTimeout(() => {
                   navigate("/offsys/admin/getSubject");
-                }, 3000);
+                }, 1000);
               } else {
                 toast.error('Failed to delete task.');
               }

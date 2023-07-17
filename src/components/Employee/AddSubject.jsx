@@ -171,7 +171,7 @@ function AddSubject() {
       });
       setTimeout(() => {
         navigate(`/offsys/admin/show/${id}`);
-      }, 1500);
+      }, 1000);
     } catch (err) {
       if (!err?.response) {
         toast.error('No Server Response');

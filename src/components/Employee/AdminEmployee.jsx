@@ -139,7 +139,7 @@ if (isDuplicateID) {
 
         setTimeout(() => {
           navigate("/offsys/admin/getEmp");
-        }, 3000);
+        }, 1000);
 
     } catch (err) {
       if (!err?.response) {
