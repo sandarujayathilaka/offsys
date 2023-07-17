@@ -284,6 +284,7 @@ useEffect(() => {
               <input 
                 className="border py-2 px-3 text-grey-800 w-full rounded-xl shadow-md"
                 required
+                disabled
                 type="text"
                 placeholder="Employer ID"
                 name="eid"
