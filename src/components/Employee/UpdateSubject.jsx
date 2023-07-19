@@ -92,6 +92,10 @@ function EditEmployee() {
     } catch (err) {
       if (!err?.response) {
         toast.error("No Server Response");
+      } else if (err.response?.status === 405) {
+        toast.error("  Report is already saved in the database.");
+      } else if (err.response?.status === 403) {
+        toast.error("  Subject is already saved in the database.");
       } else {
         toast.error("Registration Failed");
       }

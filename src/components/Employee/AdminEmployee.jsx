@@ -104,52 +104,65 @@ function AdminEmployee() {
     }
 
     try {
-const { accessToken } = auth;
+      const { accessToken } = auth;
 
-const isDuplicateID = employee.some((emp) => emp.eid === eid);
-      
-if (isDuplicateID) {
-  toast.error("Employee ID is already registered.");
-  return;
-}
+      const isDuplicateID = employee.some((emp) => emp.eid === eid);
+
+      if (isDuplicateID) {
+        toast.error("Employee ID is already registered.");
+        return;
+      }
 
       await axios.post(
         Employee_URL,
-        JSON.stringify({  eid,name,roles,nic,phoneNumber,department,email,subject,report }),
+        JSON.stringify({
+          eid,
+          name,
+          roles,
+          nic,
+          phoneNumber,
+          department,
+          email,
+          subject,
+          report,
+        }),
         {
           headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
           withCredentials: true,
         }
       );
 
-    
       toast.success("Employee added successfully");
-      
+
       setID("");
-        setName("");
-        setDepartment("");
-        setNic("");
-        setPnum("");
-        setRole("");
-        setEmail("");
-        setReport([]);
+      setName("");
+      setDepartment("");
+      setNic("");
+      setPnum("");
+      setRole("");
+      setEmail("");
+      setReport([]);
 
-        setTimeout(() => {
-          navigate("/offsys/admin/getEmp");
-        }, 1000);
-
+      setTimeout(() => {
+        navigate("/offsys/admin/getEmp");
+      }, 1000);
+      
     } catch (err) {
       if (!err?.response) {
-        toast.error('No Server Response');
+        toast.error("No Server Response");
       } else if (err.response?.status === 409) {
-        toast.error('Employee is already registered.');
+        toast.error("Employee is already registered.");
       } else if (err.response?.status === 405) {
-        toast.error(' Only one person is allowed for this role.');
+        toast.error(" Only one person is allowed for this role.");
+      } else if (err.response?.status === 402) {
+        toast.error(" Same subject value is passed multiple times.");
+      } else if (err.response?.status === 403) {
+        toast.error(" Same report value is passed multiple times.");
       } else {
-        toast.error('Registration Failed');
+        toast.error("Registration Failed");
       }
     }
   };

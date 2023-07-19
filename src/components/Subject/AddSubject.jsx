@@ -38,50 +38,52 @@ function AddSubject() {
     }
 
     try {
-    
-const { accessToken } = auth;
-const isDuplicateID = subjects.some((emp) => emp.subject === subject);
-      
-if (isDuplicateID) {
-  toast.error("Subject Name is already used.");
-  return;
-}
-       await axios.post(
+      const { accessToken } = auth;
+      const isDuplicateID = subjects.some((emp) => emp.subject === subject);
+
+      if (isDuplicateID) {
+        toast.error("Subject Name is already used.");
+        return;
+      }
+      await axios.post(
         Subject_URL,
-        JSON.stringify({  department,subject,task,pending,reject }),
+        JSON.stringify({ department, subject, task, pending, reject }),
         {
           headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
           withCredentials: true,
         }
       );
 
-    
       toast.success("Subject added successfully");
       //clear state and controlled inputs
 
-        setSubject("");
-        setTask([]);
-        setReject([]);
-        setPending([]);
+      setSubject("");
+      setTask([]);
+      setReject([]);
+      setPending([]);
 
-    
-        setTimeout(() => {
-          navigate("/offsys/admin/getSubject");
-        }, 1000);
+      setTimeout(() => {
+        navigate("/offsys/admin/getSubject");
+      }, 1000);
     } catch (err) {
       if (!err?.response) {
-        toast.error('No Server Response');
+        toast.error("No Server Response");
       } else if (err.response?.status === 409) {
-        toast.error('Subject is already added.');
+        toast.error("Subject is already added.");
       } else if (err.response?.status === 400) {
-        toast.error('Please fill Subject ID and Department.');
+        toast.error("Please fill Subject ID and Department.");
+      } else if (err.response?.status === 402) {
+        toast.error("Same Reject value is passed multiple times.");
+      } else if (err.response?.status === 403) {
+        toast.error("Same Pending value is passed multiple times.");
+      } else if (err.response?.status === 405) {
+        toast.error("Same Task value is passed multiple times.");
       } else {
-        toast.error('Registration Failed');
+        toast.error("Registration Failed");
       }
-   
     }
   };
 

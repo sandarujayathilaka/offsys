@@ -146,23 +146,35 @@ function AddSubject() {
 
 
     try {
-        const { accessToken } = auth;
+      const { accessToken } = auth;
 
-        const isDuplicateID = employee.some((emp) => emp.eid === eid && emp._id !== oid);
+      const isDuplicateID = employee.some(
+        (emp) => emp.eid === eid && emp._id !== oid
+      );
 
-        if (isDuplicateID) {
-          toast.error("Employee ID is already registered.");
-          return;
-        }
+      if (isDuplicateID) {
+        toast.error("Employee ID is already registered.");
+        return;
+      }
 
-         await axios.put(
+      await axios.put(
         `/employee/addsub/${oid}`,
-        JSON.stringify({  eid,name,roles,nic,phoneNumber,department,email,subject,report }),
+        JSON.stringify({
+          eid,
+          name,
+          roles,
+          nic,
+          phoneNumber,
+          department,
+          email,
+          subject,
+          report,
+        }),
         {
           headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`,
+          },
           withCredentials: true,
         }
       );
@@ -174,13 +186,20 @@ function AddSubject() {
       }, 1000);
     } catch (err) {
       if (!err?.response) {
-        toast.error('No Server Response');
+        toast.error("No Server Response");
       } else if (err.response?.status === 405) {
-        toast.error(' Only one employee is allowed for this role.');
+        toast.error(" Only one employee is allowed for this role.");
+      } else if (err.response?.status === 403) {
+        toast.error(" Subject is already saved in the database.");
+      } else if (err.response?.status === 402) {
+        toast.error(" Same subject value is passed multiple times.");
+      } else if (err.response?.status === 406) {
+        toast.error(" Report is already saved in the database.");
+      } else if (err.response?.status === 408) {
+        toast.error(" Same report value is passed multiple times.");
       } else {
-        toast.error('Failed to update');
+        toast.error("Failed to update");
       }
-      
     }
   };
  
@@ -278,7 +297,7 @@ useEffect(() => {
             Edit Employee
           </h1>
 
-          <form method="post" className="grid grid-cols-2 gap-1">
+          <div className="grid grid-cols-2 gap-1">
             <div className="flex flex-col mb-4 mr-4 pt-8">
               <label className="mb-2 font-bold text-lg text-black ml-5" for="eid">Employer ID</label>
               <input 
@@ -512,7 +531,7 @@ useEffect(() => {
     </div>
   </div>
           ))}
-</form>
+</div>
 <div className="col-span-2 flex justify-center">
               <button
                 type="button"
