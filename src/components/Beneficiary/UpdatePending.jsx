@@ -165,7 +165,7 @@ function UpdatePending() {
                 name="benName"
                 id="benName"
                 onChange={(e) => {
-                  setBname(e.target.value);
+                  setBname(e.target.value.toUpperCase());
                 }}
               />
             </div>

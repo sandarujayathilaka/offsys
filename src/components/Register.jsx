@@ -25,6 +25,7 @@ function Register() {
   const [success] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [reshowPassword, setReShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   
   useEffect(() => {
@@ -44,47 +45,49 @@ function Register() {
     
     const v1 = USER_REGEX.test(user);
     const v2 = PWD_REGEX.test(pwd);
-    if (!v1 || !v2) {
-      toast.error("Invalid Entry");
+    if (!v1) {
+      toast.error("Please Enter Valid Username");
       return;
     }
+    if (!v2) {
+      toast.error("Password conditions not matched");
+      return;
+    }
+
+    setLoading(true);
     
     
     try {
-     
-      await axios.post(
-        REGISTER_URL,
-        JSON.stringify({ user, pwd,matchPwd }),
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true
-        }
-      );
-     
+      await axios.post(REGISTER_URL, JSON.stringify({ user, pwd, matchPwd }), {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      });
+
       toast.success("Registered successfully");
       toast.success("Please login");
       //clear state and controlled inputs
-      setUser('');
-      setPwd('');
-      setMatchPwd('');
+      setUser("");
+      setPwd("");
+      setMatchPwd("");
       setTimeout(() => {
         navigate("/offsys");
-       }, 1500);
+      }, 1500);
     } catch (err) {
       if (!err?.response) {
-        console.log(err)
-        toast.error('No Server Response');
+        console.log(err);
+        toast.error("No Server Response");
       } else if (err.response?.status === 409) {
-        toast.error('Username Taken. Please Login');
+        toast.error("Username Taken. Please Login");
       } else if (err.response?.status === 404) {
-        toast.error('You are not authorized person');
-      }  else if (err.response?.status === 401) {
-        toast.error('Password mismatching');
-      }else {
-        toast.error('Registration Failed');
+        toast.error("You are not authorized person");
+      } else if (err.response?.status === 401) {
+        toast.error("Password mismatching");
+      } else {
+        toast.error("Registration Failed");
       }
-   
-     }
+    } finally {
+      setLoading(false); // Stop loading
+    }
     
   };
 
@@ -98,7 +101,24 @@ function Register() {
 
   return (
     <>
-      {success ? (
+      {loading ? ( // Render the loading page if loading state is true
+        <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="50"
+            height="50"
+            fill="currentColor"
+            className="bi bi-arrow-repeat animate-spin"
+            viewBox="0 0 16 16"
+          >
+            <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+            <path
+              fillRule="evenodd"
+              d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"
+            />
+          </svg>
+        </div>
+      ) : success ? (
         <section>
           <h1>Success!</h1>
           <p>
@@ -134,7 +154,7 @@ function Register() {
                   className="w-72 h-12 px-4 mb-5 rounded"
                   required
                   onChange={(e) => {
-                    setUser(e.target.value);
+                    setUser(e.target.value.toUpperCase());
                   }}
                 />
                 <div className="relative">
@@ -182,6 +202,45 @@ function Register() {
                     )}
                   </button>
                 </div>
+
+                <div className="ml-[120px] text-sm text-red-500">
+                  {pwd.length > 0 && (
+                    <>
+                      {pwd.length < 8 && (
+                        <div>
+                          - Password should be at least 8 characters long.
+                        </div>
+                      )}
+                      {!/[a-z]/.test(pwd) && (
+                        <div>
+                          - Password should contain at least one lowercase
+                          letter.
+                        </div>
+                      )}
+                      {!/[A-Z]/.test(pwd) && (
+                        <div>
+                          - Password should contain at least one uppercase
+                          letter.
+                        </div>
+                      )}
+                      {!/[0-9]/.test(pwd) && (
+                        <div>- Password should contain at least one digit.</div>
+                      )}
+                      {!/[!@#$%]/.test(pwd) && (
+                        <div>
+                          - Password should contain at least one special
+                          character (!@#$%).
+                        </div>
+                      )}
+                      {pwd.length > 24 && (
+                        <div>
+                          - Password should be at most 24 characters long.
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+
                 <div className="relative">
                   <input
                     type={reshowPassword ? "text" : "password"} // Update input type based on showPassword state
@@ -228,7 +287,45 @@ function Register() {
                   </button>
                 </div>
 
-                <button className="w-32 h-10 bg-[#E65F2B] text-white font-bold rounded">
+                <div className="ml-[120px] text-sm text-red-500">
+                  {matchPwd.length > 0 && (
+                    <>
+                      {matchPwd.length < 8 && (
+                        <div>
+                          - Password should be at least 8 characters long.
+                        </div>
+                      )}
+                      {!/[a-z]/.test(matchPwd) && (
+                        <div>
+                          - Password should contain at least one lowercase
+                          letter.
+                        </div>
+                      )}
+                      {!/[A-Z]/.test(matchPwd) && (
+                        <div>
+                          - Password should contain at least one uppercase
+                          letter.
+                        </div>
+                      )}
+                      {!/[0-9]/.test(matchPwd) && (
+                        <div>- Password should contain at least one digit.</div>
+                      )}
+                      {!/[!@#$%]/.test(matchPwd) && (
+                        <div>
+                          - Password should contain at least one special
+                          character (!@#$%).
+                        </div>
+                      )}
+                      {pwd.length > 24 && (
+                        <div>
+                          - Password should be at most 24 characters long.
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                <button className="w-32 h-10 mt-5 bg-[#E65F2B] text-white font-bold rounded">
                   Create Account
                 </button>
               </form>

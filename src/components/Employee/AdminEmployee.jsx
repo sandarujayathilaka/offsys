@@ -259,7 +259,7 @@ const handleRemoveReport = (index) => {
                 id="eid"
                 minLength="4"
                 onChange={(e) => {
-                  setID(e.target.value);
+                  setID(e.target.value.toUpperCase());
                 }}
               />
             </div>
@@ -275,7 +275,7 @@ const handleRemoveReport = (index) => {
                 name="name"
                 id="name"
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setName(e.target.value.toUpperCase());
                 }}
               />
               

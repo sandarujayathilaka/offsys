@@ -291,7 +291,7 @@ useEffect(() => {
                 id="eid"
                 value={eid}
                 onChange={(e) => {
-                  setEid(e.target.value);
+                  setEid(e.target.value).toUpperCase();
                 }}
               />
             </div>
@@ -308,7 +308,7 @@ useEffect(() => {
                 id="name"
                 value={name}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setName(e.target.value).toUpperCase();
                 }}
               />
               

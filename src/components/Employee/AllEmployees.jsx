@@ -112,7 +112,7 @@ function AllEmployees() {
             <label htmlFor="simple-search" className="sr-only">
               Search
             </label>
-            <div className="relative mx-auto ml-auto w-[300px] left-20">
+            <div className="relative mx-auto ml-[625px] w-[300px] left-20">
               <div className="absolute inset-y-0  flex items-center pointer-events-none">
                 <svg
                   aria-hidden="true"

@@ -111,7 +111,7 @@ const {  accessToken } = auth;
                 id="did"
                 value={did}
                 onChange={(e) => {
-                  setID(e.target.value);
+                  setID(e.target.value).toUpperCase();
                 }}
               />
             </div>
@@ -128,7 +128,7 @@ const {  accessToken } = auth;
                 id="name"
                 value={name}
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setName(e.target.value).toUpperCase();
                 }}
               />
               

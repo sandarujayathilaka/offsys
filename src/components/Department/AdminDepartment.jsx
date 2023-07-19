@@ -79,7 +79,7 @@ function AdminDepartment() {
   
       setTimeout(() => {
         navigate("/offsys/admin/getDep");
-      }, 3000);
+      }, 1000);
     } catch (err) {
       if (!err?.response) {
         toast.error('No Server Response');
@@ -111,7 +111,7 @@ function AdminDepartment() {
                 name="did"
                 id="did"
                 onChange={(e) => {
-                  setID(e.target.value);
+                  setID(e.target.value.toUpperCase());
                 }}
               />
             </div>
@@ -127,7 +127,7 @@ function AdminDepartment() {
                 name="name"
                 id="name"
                 onChange={(e) => {
-                  setName(e.target.value);
+                  setName(e.target.value.toUpperCase());
                 }}
               />
               

@@ -53,25 +53,28 @@ const status= param.status
 
   const updateSub = async (e) => {
     e.preventDefault();
-    
-    if (task == "") {
-      toast.warn("Please fill the task", {
-        autoClose: 5000, // Display for 3 seconds
-      });
-      return;
-    }
-    if (pending == "") {
-      toast.warn("Please fill the pending reason", {
-        autoClose: 5000, // Display for 3 seconds
-      });
-      return;
-    }
-    if (reject == "") {
-      toast.warn("Please fill the reject reason", {
-        autoClose: 5000, // Display for 3 seconds
-      });
-      return;
-    }
+   if (status === "task") {
+     if (task == "") {
+       toast.warn("Please fill the task", {
+         autoClose: 2000, // Display for 3 seconds
+       });
+       return;
+     }
+   } else if (status === "pending") {
+     if (pending == "") {
+       toast.warn("Please fill the pending reason", {
+         autoClose: 2000, // Display for 3 seconds
+       });
+       return;
+     }
+   } else {
+     if (reject == "") {
+       toast.warn("Please fill the reject reason", {
+         autoClose: 2000, // Display for 3 seconds
+       });
+       return;
+     }
+   }
 
     try {
    

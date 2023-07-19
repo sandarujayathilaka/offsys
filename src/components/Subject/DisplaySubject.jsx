@@ -199,6 +199,7 @@ const onDeleteSubject = async (id) => {
         ) : (
           <div class="flex pt-[30px] pb-16">
             <div class=" w-full ml-20 mr-20 bg-slate-100 border rounded-lg overflow-hidden dark:border-gray-700">
+              <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                   <tr class="bg-blue-400">
@@ -276,6 +277,7 @@ const onDeleteSubject = async (id) => {
                     ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         )}
@@ -308,6 +310,7 @@ const onDeleteSubject = async (id) => {
         ) : (
           <div class="flex pt-[30px] pb-16">
             <div class=" w-full ml-20 mr-20 bg-slate-100 border rounded-lg overflow-hidden dark:border-gray-700">
+              <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                   <tr class="bg-blue-400">
@@ -385,6 +388,7 @@ const onDeleteSubject = async (id) => {
                     ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         )}
@@ -417,6 +421,7 @@ const onDeleteSubject = async (id) => {
         ) : (
           <div class="flex pt-[30px] pb-16">
             <div class=" w-full ml-20 mr-20 bg-slate-100 border rounded-lg overflow-hidden dark:border-gray-700">
+              <div class="overflow-x-auto">
               <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                 <thead>
                   <tr class="bg-blue-400">
@@ -494,6 +499,7 @@ const onDeleteSubject = async (id) => {
                     ))}
                 </tbody>
               </table>
+              </div>
             </div>
           </div>
         )}
