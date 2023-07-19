@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/offsys/static/css/main.615fc61b.css",
-    "main.js": "/offsys/static/js/main.a56057fd.js",
+    "main.css": "/offsys/static/css/main.6d372836.css",
+    "main.js": "/offsys/static/js/main.04098962.js",
     "static/media/1.png": "/offsys/static/media/1.a56ba367d3a6ed0f3bbe.png",
     "static/media/Capture.PNG": "/offsys/static/media/Capture.c828d6ba83fd324f83c8.PNG",
     "static/media/logo.png": "/offsys/static/media/logo.5d73bb957759b58b8b42.png",
     "index.html": "/offsys/index.html",
-    "main.615fc61b.css.map": "/offsys/static/css/main.615fc61b.css.map",
-    "main.a56057fd.js.map": "/offsys/static/js/main.a56057fd.js.map"
+    "main.6d372836.css.map": "/offsys/static/css/main.6d372836.css.map",
+    "main.04098962.js.map": "/offsys/static/js/main.04098962.js.map"
   },
   "entrypoints": [
-    "static/css/main.615fc61b.css",
-    "static/js/main.a56057fd.js"
+    "static/css/main.6d372836.css",
+    "static/js/main.04098962.js"
   ]
 }
