@@ -213,7 +213,7 @@ const handlePendChange = (index, event) => {
     name="subject"
     id="subject"
     onChange={(e) => {
-      setSubject(e.target.value);
+      setSubject(e.target.value.toUpperCase());
     }}
   />
 </div>

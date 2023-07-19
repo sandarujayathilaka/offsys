@@ -121,7 +121,7 @@ toast.success("Login successfully");
     return (
       <>
         {loading ? ( // Render the loading page if loading state is true
-          <div className="h-screen bg-gray-900 text-white flex items-center justify-center">
+          <div className="h-screen bg-teal-900 text-white flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="50"
