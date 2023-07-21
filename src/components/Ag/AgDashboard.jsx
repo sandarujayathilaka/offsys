@@ -303,56 +303,7 @@ const AgDashboard = () => {
           </div>
          
         </div>
-         <div className="bg-slate-400 rounded-lg shadow-2xl p-8 m-4 w-full sm:w-96 md:w-[90%] lg:w-[70%] xl:w-[60%]">
-            <div className="mt-8">
-              {eventStatus.length > 0 && (
-                <div style={{ display: "flex" }}>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ textAlign: "center" }}>
-                      <h1
-                        style={{
-                          textAlign: "left",
-                          marginLeft: "200px",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        Task Status Bar Chart
-                      </h1>
-                      <div style={{ width: "100%" }}>
-                        <BarChart
-                          width={500}
-                          height={300}
-                          data={eventStatus}
-                          margin={{
-                            top: 5,
-                            right: 30,
-                            left: 20,
-                            bottom: 5,
-                          }}
-                          barSize={20}
-                        >
-                          <XAxis
-                            dataKey="name"
-                            scale="point"
-                            padding={{ left: 10, right: 10 }}
-                          />
-                          <YAxis />
-                          <Tooltip />
-                          <Legend />
-                          <CartesianGrid strokeDasharray="3 3" />
-                          <Bar
-                            dataKey="value"
-                            fill="#8884d8"
-                            background={{ fill: "#eee" }}
-                          />
-                        </BarChart>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+        
       </div>
     </div>
   );
