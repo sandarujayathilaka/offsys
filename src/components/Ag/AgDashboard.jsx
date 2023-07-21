@@ -212,23 +212,19 @@ const AgDashboard = () => {
   }, [auth]);
 
   return (
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:p-0 sm:ml-64">
       <div
-        className="flex justify-center items-center h-full "
+        className="flex justify-center items-center h-full"
         style={{ marginTop: "100px" }}
       >
-        <div
-          className="bg-white rounded-lg shadow-2xl p-8 m-4 w-[100%]"
-          style={{ backgroundColor: "white" }}
-        >
-          <div className="mt-[42px]  flex justify-center items-center">
-            <div class="ml-[-70px]">
+        <div className="bg-slate-400 rounded-lg shadow-2xl p-8 m-4 w-full sm:w-96 md:w-[90%] lg:w-[70%] xl:w-[60%]">
+          <div className="mt-5 sm:mt-0 flex flex-wrap justify-center items-center">
+            <div class="mb-3 md:mb-0 md:mr-3">
               <select
                 id="department"
                 value={selectedDepartment}
                 onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="bg-[#2E4960] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-15 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                style={{ color: "#FFFFFF" }}
+                className="bg-[#2E4960] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-40 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-white"
               >
                 <option value="All">All Department</option>
                 {department.map((dept) => (
@@ -238,13 +234,12 @@ const AgDashboard = () => {
                 ))}
               </select>
             </div>
-            <div class="ml-[80px]">
+            <div class="mb-3 md:mb-0 md:mr-3">
               <select
                 id="employee"
                 value={selectedEmployee}
                 onChange={(e) => setSelectedEmployee(e.target.value)}
-                className="bg-[#2E4960] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-15 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                style={{ color: "#FFFFFF" }}
+                className="bg-[#2E4960] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-40 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-white"
               >
                 <option value="All">All Employee</option>
                 {employee.map((emp) => (
@@ -254,90 +249,110 @@ const AgDashboard = () => {
                 ))}
               </select>
             </div>
-            <div class="ml-[110px]">
+            <div class="mb-3 md:mb-0 md:ml-3 md:mr-3">
               <input
                 type="date"
                 id="simple-search"
                 value={selectedDate}
                 onChange={(e) => setSelectedDate(e.target.value)}
-                className="bg-white border ml-5 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:border-gray-600 dark:placeholder-gray-400  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full sm:w-auto pl-2.5 md:pl-10 p-2.5 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search by ID or Name"
                 required
               />
             </div>
           </div>
-          <div className="flex justify-around mt-20">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Success</h2>
-              <p className="text-3xl font-bold">{successTasks}</p>
+
+          <div className="flex flex-wrap justify-around mt-5">
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md m-2 w-full sm:w-44 md:w-56 lg:w-60">
+              <h2 className="text-lg font-bold text-green-600">
+                Total Success
+              </h2>
+              <p className="text-3xl font-extrabold  text-green-600">
+                {successTasks}
+              </p>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Pending</h2>
-              <p className="text-3xl font-bold">{pendingTasks}</p>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md m-2 w-full sm:w-44 md:w-56 lg:w-60">
+              <h2 className="text-lg font-bold text-amber-600">
+                Total Pending
+              </h2>
+              <p className="text-3xl font-extrabold  text-amber-600">
+                {pendingTasks}
+              </p>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Reject</h2>
-              <p className="text-3xl font-bold">{rejectTasks}</p>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md m-2 w-full sm:w-44 md:w-56 lg:w-60">
+              <h2 className="text-lg font-bold text-red-600">Total Reject</h2>
+              <p className="text-4xl font-extrabold  text-red-600">
+                {rejectTasks}
+              </p>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Customers</h2>
-              <p className="text-3xl font-bold">{total}</p>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md m-2 w-full sm:w-44 md:w-56 lg:w-60">
+              <h2 className="text-lg font-bold text-blue-700">
+                Total Customers
+              </h2>
+              <p className="text-3xl font-extrabold  text-blue-700">{total}</p>
             </div>
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Progress</h2>
-              <p className="text-3xl font-bold">{progress}</p>
+            <div className="bg-gray-100 p-4 rounded-lg shadow-md m-2 w-full sm:w-44 md:w-56 lg:w-60">
+              <h2 className="text-lg font-bold text-rose-950">
+                Total Progress
+              </h2>
+              <p className="text-3xl font-extrabold  text-rose-950">
+                {" "}
+                {progress} %
+              </p>
             </div>
           </div>
-
-          <div className="mt-8">
-            {eventStatus.length > 0 && (
-              <div style={{ display: "flex" }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ textAlign: "center" }}>
-                    <h1
-                      style={{
-                        textAlign: "left",
-                        marginLeft: "200px",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Task Status Bar Chart
-                    </h1>
-                    <div style={{ width: "100%" }}>
-                      <BarChart
-                        width={500}
-                        height={300}
-                        data={eventStatus}
-                        margin={{
-                          top: 5,
-                          right: 30,
-                          left: 20,
-                          bottom: 5,
+         
+        </div>
+         <div className="bg-slate-400 rounded-lg shadow-2xl p-8 m-4 w-full sm:w-96 md:w-[90%] lg:w-[70%] xl:w-[60%]">
+            <div className="mt-8">
+              {eventStatus.length > 0 && (
+                <div style={{ display: "flex" }}>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ textAlign: "center" }}>
+                      <h1
+                        style={{
+                          textAlign: "left",
+                          marginLeft: "200px",
+                          fontWeight: "bold",
                         }}
-                        barSize={20}
                       >
-                        <XAxis
-                          dataKey="name"
-                          scale="point"
-                          padding={{ left: 10, right: 10 }}
-                        />
-                        <YAxis />
-                        <Tooltip />
-                        <Legend />
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <Bar
-                          dataKey="value"
-                          fill="#8884d8"
-                          background={{ fill: "#eee" }}
-                        />
-                      </BarChart>
+                        Task Status Bar Chart
+                      </h1>
+                      <div style={{ width: "100%" }}>
+                        <BarChart
+                          width={500}
+                          height={300}
+                          data={eventStatus}
+                          margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                          }}
+                          barSize={20}
+                        >
+                          <XAxis
+                            dataKey="name"
+                            scale="point"
+                            padding={{ left: 10, right: 10 }}
+                          />
+                          <YAxis />
+                          <Tooltip />
+                          <Legend />
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <Bar
+                            dataKey="value"
+                            fill="#8884d8"
+                            background={{ fill: "#eee" }}
+                          />
+                        </BarChart>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
       </div>
     </div>
   );
