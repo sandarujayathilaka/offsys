@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.aa76d579.css",
-    "main.js": "/static/js/main.5fb3f844.js",
-    "static/media/1.png": "/static/media/1.a56ba367d3a6ed0f3bbe.png",
-    "static/media/Capture.PNG": "/static/media/Capture.c828d6ba83fd324f83c8.PNG",
-    "static/media/logo.png": "/static/media/logo.5d73bb957759b58b8b42.png",
-    "index.html": "/index.html",
-    "main.aa76d579.css.map": "/static/css/main.aa76d579.css.map",
-    "main.5fb3f844.js.map": "/static/js/main.5fb3f844.js.map"
+    "main.css": "/offsys/static/css/main.aa76d579.css",
+    "main.js": "/offsys/static/js/main.d26c6daa.js",
+    "static/media/1.png": "/offsys/static/media/1.a56ba367d3a6ed0f3bbe.png",
+    "static/media/Capture.PNG": "/offsys/static/media/Capture.c828d6ba83fd324f83c8.PNG",
+    "static/media/logo.png": "/offsys/static/media/logo.5d73bb957759b58b8b42.png",
+    "index.html": "/offsys/index.html",
+    "main.aa76d579.css.map": "/offsys/static/css/main.aa76d579.css.map",
+    "main.d26c6daa.js.map": "/offsys/static/js/main.d26c6daa.js.map"
   },
   "entrypoints": [
     "static/css/main.aa76d579.css",
-    "static/js/main.5fb3f844.js"
+    "static/js/main.d26c6daa.js"
   ]
 }
