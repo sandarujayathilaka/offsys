@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate,Link  } from "react-router-dom";
 
 const Department_URL = '/dep/adddep';
-const Get_Department_URL = '/dep/getdep';
+const Get_Department_URL = '/dep/getdep';//get
 
 function AdminDepartment() {
   const { auth } = useAuth();
