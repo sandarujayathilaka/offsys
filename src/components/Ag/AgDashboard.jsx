@@ -176,7 +176,7 @@ const AgDashboard = () => {
     {
       name: "Total Success Task",
       value: successTasks,
-    },
+    },//get
     {
       name: "Total Pending Task",
       value: pendingTasks,
